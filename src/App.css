@@ -1,38 +1,163 @@
-.App {
-  text-align: center;
+.stellarnav ul li a {
+  font-size: 100%;
+  font-weight: 400;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.jumbotron {
+  padding: 2rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.m_gn {
+  padding-bottom: 25px;
+}
+
+.ft_in a {
+  text-decoration: none !important;
+  color: #f2f7fb;
+}
+
+@media only screen and (max-width: 480px) {
+  .emb_m {
+    display: flex;
+    justify-content: center;
+  }
+
+  .nis_twitter {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    margin-top: 5px;
+  }
+
+  .nis_twitter11 {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    margin-bottom: 5px;
+  }
+
+  .right_hdr {
+    text-align: center;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+@media only screen and (min-width: 480px) {
+  .emb_m {
+    float: right;
+  }
+
+  .nis_twitter {
+    display: flex;
+    justify-content: start;
+    /* flex-direction: column; */
+    height: 100%;
+    align-items: center;
+    align-content: center;
+  }
+
+  .emb_m img {
+    width: 100%;
+  }
+
+}
+
+
+
+
+.nis_twitter img {
+  width: 20px;
+  height: 20px;
+  background-color: transparent;
+  color: red;
+}
+
+.hdd_r {
+  width: 100%;
+  background: #001f60;
+  color: #ffffff;
+  padding: 12px 0px;
+  margin-right: 0px !important;
+  margin-left: 0px !important;
+}
+
+.hdd_r h3 {
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 2.6rem;
+}
+
+.hdd_r h5 {
+  font-size: 1.4rem;
+  line-height: 0.5rem;
+  padding-bottom: 8px;
+}
+
+.h_cn {
+  box-shadow: 0px 13px 15px #dddddd;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding: 0px 0px;
 }
 
-.App-link {
-  color: #61dafb;
+
+
+
+.jumbotron {
+  background-color: #2a3942 !important;
+  border-radius: 0rem !important;
+  color: #8fa2ad !important;
+  margin-top: -8px !important;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+body {
+  background: #ecf0f1;
+  color: #34495e;
+  font-family: 'Lato', 'Arial', sans-serif;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.ft_in .fa-angle-double-right {
+  padding: 0px 4px;
+}
+
+.top_head {
+  width: 100%;
+  background: #000000;
+  padding: 4px 0;
+}
+
+.pull-right {
+  float: right !important;
+}
+
+.top-acess ul {
+  margin: 0;
+  padding: 0;
+}
+
+.top-acess ul li {
+  display: inline-block;
+  vertical-align: top;
+  color: #ffffff;
+  font-weight: 600;
+  margin-right: 5px;
+  /*font-size: 0.9rem;*/
+  font-size: 90%;
+}
+
+.top-acess li.icon {
+  width: 28px;
+  height: 28px;
+  text-align: center;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  padding-top: 1px;
+}
+
+a {
+  text-decoration: none !important;
 }
