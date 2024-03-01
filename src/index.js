@@ -4,11 +4,45 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.css';
+import { BrowserRouter, RouterProvider, createBrowserRouter } from 'react-router-dom';
+import Layout from './component/layout.jsx';
+import Home from './component/Home.jsx';
+import Archive from './component/Archive.jsx';
+import DefaultPage from './component/Default.jsx';
+
+
+
+
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <Layout />,
+    children: [
+      {
+        path: "",
+        element: <Home />
+      },
+      {
+        path: "archive",
+        element: <Archive />
+      },
+      {
+        path: "default",
+        element: <DefaultPage />
+      }
+    ]
+
+  }
+])
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    {/* <BrowserRouter>
+      <App />
+    </BrowserRouter> */}
+    <RouterProvider router={router}></RouterProvider>
   </React.StrictMode>
 );
 
