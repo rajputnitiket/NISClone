@@ -1,9 +1,14 @@
 import React from 'react'
+import Data from './Data'
+import News from './news';
 
 function Home() {
   return (
-    <div>Home</div>
-  )
+    <>
+      <News></News>
+
+    </>
+  );
 }
 
-export default Home
+export default Home;

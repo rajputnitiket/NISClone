@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import '../mycss.css';
+import '../App.css'
 
 const Data = () => {
   const [data, setData] = useState([]);
@@ -8,30 +10,32 @@ const Data = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const apiURL = 'http://localhost:51259/api/getfiltered_data'; 
-        const token = 'xfS_6z2hddIJzwRZitnA6c3VxqqPVFc08mtn3WfHQ9nci-UdvJJo7O0CMcjSplP4P7ol7tlrGUC_VeXdrPRc7-eTMW9oNfZb_hWJNjRv2ttCVHc9YnIn5RBrtkqojzPEih3tPM6KeklL5GtHE5NodXNLADW7EGngLVlJkELIWggp7W4BQdxVjdPlXHgss-wiilKg-cCZ6ovjZ6PskvZe-hgoiIlrMewNw4s4UiWQ7xuhpS378fFS-k6jTxI1O98_EIRP67SbeCse4rO9joYw8iV-owxZ1e_zLdHmrJ-Bwfo';
+        const apiURL = 'http://localhost:58195/api/getDefaultData';
+        const token = process.env.REACT_APP_TOKEN;
+        console.log(token);
         const requestBody = {
-            lang_id:'1'
+
         };
         const response = await axios.post(apiURL, requestBody, {
           headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
-            
+
           },
         });
-        setData(response.data); 
+        setData(response.data);
+
         setLoading(false);
       } catch (error) {
         if (error.response) {
-          // The request was made and the server responded with a status code
+
           console.error('Response error status:', error.response.status);
           console.error('Response error data:', error.response.data);
         } else if (error.request) {
-          // The request was made but no response was received
+
           console.error('Request error:', error.request);
         } else {
-          // Something happened in setting up the request that triggered an Error
+
           console.error('Error:', error.message);
         }
         console.error('Error config:', error.config);
@@ -39,26 +43,97 @@ const Data = () => {
       }
     };
 
-    fetchData(); 
-  }, []); 
+
+    fetchData();
+  }, []);
+
 
   return (
-    <div>
-      <h1>Data from SQL API</h1>
+    <>
+      <div>
+        <ul className='align'>
+          {data.length > 0 ? (
+            data.map((rd, index) => {
+              const datte = rd.publishDate;
+              //console.log(datte);
+              const dateParts = rd.publishDate.split('-');
+              const dateK = new Date(dateParts[2], dateParts[1] - 1, dateParts[0]);
+              const yr_link = dateK.getFullYear();
+
+              const mon_th = dateK.toLocaleDateString('en-US', { month: 'short' }).toLowerCase();
+
+              const dateFormat = dateK.toLocaleDateString('en-US', { day: '2-digit', month: 'long', year: 'numeric' });
+
+              const url_ll = rd.url;
+
+              const flip_path1 = `/${yr_link}/${mon_th}`;
+              const flip_path = `/WriteReadData/flipbook/${flip_path1}/${rd.Language}`;
+
+              const url_thumb = `http://newindiasamachar.pib.gov.in/WriteReadData/Magazine/${flip_path1}/${rd.thumbFile}`;
+              const url_pdf = `http://newindiasamachar.pib.gov.in/WriteReadData/Magazine/${flip_path1}/${rd.MagFile}`;
+
+              return (
+                <li key={index}>
+                  <div className='card wh_bx'>
+                    <figure className='book'>
+                      <ul className='hardcover_front'>
+                        <li>
+                          <img src={url_thumb} alt='' width='100%' height='100%' onClick={() => console.log(dateK)} />
+                          <span className='ribbon bestseller'>New</span>
+                        </li>
+                        <li></li>
+                      </ul>
+                      <ul className='page'>
+                        <li></li>
+                        <li>
+                          <a className='btn' href={url_pdf} target='_blank' title={rd.title}>
+                            Download <i className='fa fa-download'></i>
+                          </a>
+                        </li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                      </ul>
+                      <ul className='hardcover_back'>
+                        <li></li>
+                        <li></li>
+                      </ul>
+                    </figure>
+                    <figcaption className='cap_pp'></figcaption>
+                    <div className='ln_book'>{rd.Language}</div>
+                    {url_ll !== '' && (
+                      <a href={flip_path} className='more11' target='_blank'>
+                        Flip Book
+                      </a>
+                    )}
+                  </div>
+                </li>
+              );
+            })
+          ) : (
+            <div className='ftr'>No data found</div>
+          )}
+        </ul>
+      </div>
+      {/* <div>
+      <h1></h1>
       <ul>
   {data.map((item) => (
-    <li key={item.Cat_Id}>
-    <div>Cat_Id: {item.Cat_Id}</div>
-    <div>Category Name: {item.Category_name}</div>
+    <li key={item.Id}>
+    <div>Cat_Id: {item.Id}</div>
+    <div>Category Name: {item.MagFile}</div>
     <div>Language ID: {item.lang_id}</div>
-    <div>Story File: {item.StoryFile}</div>
+    <div>Story File: {item.title}</div>
     <div>Publish Date: {item.publishDate}</div>
     <div>Status: {item.status}</div>
     <div>Active: {item.active}</div>
     </li>
   ))}
 </ul>
-    </div>
+    </div> */}
+    </>
+
+
   );
 };
 

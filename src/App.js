@@ -6,7 +6,9 @@ import './image/indian-emblemm.png';
 import Footer from './component/Footer';
 import Data from './component/Data';
 import { Route, Switch, Router } from 'react-router-dom';
-
+import News from './component/news';
+import './mycss.css';
+import './App.css'
 
 
 
@@ -14,10 +16,8 @@ function App() {
   return (
     <>
 
-
-
       <Header />
-      <Data />
+      <News />
       <Footer />
     </>
 
