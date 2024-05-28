@@ -55,7 +55,7 @@ const Archive = () => {
   const fetchData = async () => {
     try {
       //console.log(year);
-      const apiURL = 'http://localhost:58195/api/getArchiveData';
+      const apiURL = process.env.REACT_APP_API_URL + '/api/getArchiveData';
       const token = process.env.REACT_APP_TOKEN;
       const requestBody = {
 
@@ -85,7 +85,7 @@ const Archive = () => {
   useEffect(() => {
     const fetchLanguages = async () => {
       try {
-        const apiURL1 = 'http://localhost:58195/api/getlanguage';
+        const apiURL1 = process.env.REACT_APP_API_URL + '/api/getlanguage';
         const token = process.env.REACT_APP_TOKEN;
         const requestBody = {};
         const response = await axios.post(apiURL1, requestBody, {

@@ -10,7 +10,7 @@ const Data = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const apiURL = 'http://localhost:58195/api/getDefaultData';
+        const apiURL = process.env.REACT_APP_API_URL + '/api/getDefaultData';
         const token = process.env.REACT_APP_TOKEN;
         console.log(token);
         const requestBody = {

@@ -16,7 +16,7 @@ const News = () => {
 
   const fetchData = async () => {
     try {
-      const apiURL = 'http://localhost:58195/api/getNewsData';
+      const apiURL = process.env.REACT_APP_API_URL + '/api/getNewsData';
       const token = process.env.REACT_APP_TOKEN;
       const requestBody = {
 
